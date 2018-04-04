@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SimpleES.Core.Services;
 
 namespace SimpleES.Api
 {
@@ -24,6 +25,8 @@ namespace SimpleES.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<ICustomerService,CustomerService>();
+            services.AddSingleton<IEventStore,EventStore>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
